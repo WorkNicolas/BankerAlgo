@@ -47,12 +47,15 @@ public class Main {
                     if (initialized) {
                         ba = new BankerAlgorithm(ctrl.getModel());
                         ba.procedure();
+                        System.out.println(ba.getOut());
+                        System.out.println("[ENTER] Continue");
+                        new Scanner(System.in).nextLine();
                     } else {
                         System.out.println("Error: Uninitialized values");
                     }
                 }
                 case 4 -> {
-                    System.out.println("Exiting the program...");
+                    System.out.println("System.exit(status: 0)");
                     System.exit(0);
                 }
                 default -> System.out.println("Invalid input: Unavailable option");
