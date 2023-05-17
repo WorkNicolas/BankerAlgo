@@ -54,14 +54,14 @@ public class View {
         }
         return integer;
     }
-    public int[] setVector(Scanner scanner, String text) {
+    public int[] setVector(Scanner sc, String text) {
         boolean isValidInput = false;
         int[] array = null;
-
         while (!isValidInput) {
+            sc.reset();
             try {
                 System.out.print("[IN IN IN ...] " + text + ": ");
-                String input = scanner.nextLine();
+                String input = sc.nextLine();
 
                 // Split the input string into individual elements
                 String[] elements = input.split(" ");

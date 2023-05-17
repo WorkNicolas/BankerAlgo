@@ -85,11 +85,13 @@ public class BankerAlgorithm {
         System.out.println("Allocation Matrix:\n" + Arrays.deepToString(model.getAllocation()));
         System.out.println("Max Matrix:\n" + Arrays.deepToString(model.getMax()));
         System.out.println("Available Resource: " + Arrays.toString(model.getAvailable()));
+
     }
     public void procedure() {
         displayValues();
         calculateNeed();
         isSafe();
+        System.out.println();
     }
 
 }
