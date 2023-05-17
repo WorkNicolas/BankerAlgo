@@ -1,3 +1,11 @@
+import java.util.Arrays;
+
+/**
+ * Procedure:
+ * 1. Initialize Values
+ * 2. calculateNeed()
+ * 3. isSafe()
+ */
 public class BankerAlgorithm {
     private int process;
     private int resource;
@@ -6,7 +14,9 @@ public class BankerAlgorithm {
     private int[][] allocation;
     private int[] available;
     private int[] safeSequence;
+    private Model model;
     public BankerAlgorithm(Model model) {
+        this.model = model;
         this.process = model.getProcess();
         this.resource = model.getResource();
         this.needs = model.getNeeds();
@@ -18,19 +28,17 @@ public class BankerAlgorithm {
     private void isSafe() {
         int count = 0;
         // visit array to find allocated process
-        boolean visited[] = new boolean[process];
+        boolean[] visited = new boolean[process];
         for (int i = 0; i < process; i++) {
             visited[i] = false;
         }
         //work array to store the copy of available resources
-        int work[] = new int[resource];
-        for (int i = 0; i < resource; i++) {
-            work[i] = available[i];
-        }
+        int[] work = new int[resource];
+        System.arraycopy(available, 0, work, 0, resource);
         while (count < process) {
             boolean flag = false;
             for (int i = 0; i < process; i++) {
-                if (visited[i] == false) {
+                if (!visited[i]) {
                     int j;
                     for (j = 0; j < resource; j++) {
                         if (needs[i][j] > work[j])
@@ -47,7 +55,7 @@ public class BankerAlgorithm {
                     }
                 }
             }
-            if (flag == false) {
+            if (!flag) {
                 break;
             }
         }
@@ -69,6 +77,19 @@ public class BankerAlgorithm {
                 needs[i][j] = max[i][j] - allocation[i][j];
             }
         }
+    }
+    private void displayValues() {
+        System.out.println("Finding Safe Sequence using Initialized Values");
+        System.out.println("Process: " + model.getProcess());
+        System.out.println("Resource: " + model.getResource());
+        System.out.println("Allocation Matrix:\n" + Arrays.deepToString(model.getAllocation()));
+        System.out.println("Max Matrix:\n" + Arrays.deepToString(model.getMax()));
+        System.out.println("Available Resource: " + Arrays.toString(model.getAvailable()));
+    }
+    public void procedure() {
+        displayValues();
+        calculateNeed();
+        isSafe();
     }
 
 }

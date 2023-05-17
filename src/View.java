@@ -7,10 +7,10 @@ public class View {
         displayMenu();
     }
     public void displayMenu() {
-        System.out.println("Main Menu");
+        System.out.println("Banker's Algorithm");
         System.out.println("[1] Initialize Values");
         System.out.println("[2] Preset Values");
-        System.out.println("[3] Banker's Algorithm");
+        System.out.println("[3] Find Safe Sequence");
         System.out.println("[4] Exit");
         System.out.print("Input: ");
     }
@@ -114,8 +114,8 @@ public class View {
     private void displayVal() {
         System.out.println("Process: " + model.getProcess());
         System.out.println("Resource: " + model.getResource());
-        System.out.println("Allocation Matrix:\n" + Arrays.toString(model.getAllocation()));
-        System.out.println("Max Matrix:\n4" + Arrays.toString(model.getMax()));
+        System.out.println("Allocation Matrix:\n" + Arrays.deepToString(model.getAllocation()));
+        System.out.println("Max Matrix:\n" + Arrays.deepToString(model.getMax()));
         System.out.println("Available Resource: " + Arrays.toString(model.getAvailable()));
     }
     public Model getModel() {

@@ -1,9 +1,13 @@
+import java.util.Scanner;
+
 public class Controller {
     private Model model;
     private View view;
-    public Controller (Model model, View view) {
+    private Scanner sc;
+    public Controller (Model model, View view, Scanner sc) {
         this.model = model;
         this.view = view;
+        this.sc = sc;
     }
     public void updateView(Model model) {
         view.setModel(model);
@@ -13,6 +17,7 @@ public class Controller {
         int resource = 3;
         int[][] needs = new int[process][resource];
         int[][] max = new int[][] {
+                {7,5,3},
                 {3,2,2},
                 {9,0,2},
                 {2,2,2},
@@ -32,6 +37,7 @@ public class Controller {
         model.setResource(resource);
         model.setNeeds(needs);
         model.setMax(max);
+        model.setAllocation(allocation);
         model.setAvailable(available);
         model.setSafeSequence(safeSequence);
         updateView(model);
@@ -39,5 +45,12 @@ public class Controller {
     }
     public View getView() {
         return view;
+    }
+    public Model getModel() {
+        return model;
+    }
+    public void initValue() {
+        view.initVal(sc);
+        this.model = view.getModel();
     }
 }

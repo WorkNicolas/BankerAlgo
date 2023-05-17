@@ -4,36 +4,45 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Model model = new Model();
         View view = new View(model);
-        Controller ctrl = new Controller(model, view);
+        Controller ctrl = new Controller(model, view, sc);
+        BankerAlgorithm ba;
+        boolean viewed = false;
+        boolean initialized = false;
         while (true) {
-            while (true) {
+            if (viewed) {
                 ctrl.getView().displayMenu();
+            }
+            viewed = true;
+            int choice;
+            try {
+                choice = sc.nextInt();
+            } catch (NumberFormatException ex) {
+                System.out.println("Invalid input: " + ex);
+                continue;
+            }
 
-                int choice = 0;
-                try {
-                    choice = sc.nextInt();
-                } catch (Exception e) {
-                    System.out.println("Invalid input. Please enter a valid choice.");
-                    continue;
+            switch (choice) {
+                case 1 -> {
+                    ctrl.initValue();
+                    initialized = true;
                 }
-
-                switch (choice) {
-                    case 1:
-                        ctrl.getView().initVal(sc);
-                        break;
-                    case 2:
-                        ctrl.setPreset();
-                        break;
-                    case 3:
-                        // Implement Banker's Algorithm functionality
-                        break;
-                    case 4:
-                        System.out.println("Exiting the program...");
-                        System.exit(0);
-                        break;
-                    default:
-                        System.out.println("Invalid choice. Please enter a valid choice.");
+                case 2 -> {
+                    ctrl.setPreset();
+                    initialized = true;
                 }
+                case 3 -> {
+                    if (initialized) {
+                        ba = new BankerAlgorithm(ctrl.getModel());
+                        ba.procedure();
+                    } else {
+                        System.out.println("Error: Uninitialized values");
+                    }
+                }
+                case 4 -> {
+                    System.out.println("Exiting the program...");
+                    System.exit(0);
+                }
+                default -> System.out.println("Invalid input: Unavailable option");
             }
         }
     }
