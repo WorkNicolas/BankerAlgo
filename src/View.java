@@ -174,6 +174,7 @@ public class View {
         System.out.println("Max Matrix:\n" + Arrays.deepToString(model.getMax()));
         System.out.println("Available Resource: " + Arrays.toString(model.getAvailable()));
     }
+
     public Model getModel() {
         return model;
     }

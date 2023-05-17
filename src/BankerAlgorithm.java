@@ -1,3 +1,10 @@
+/**
+ * Menu view for BankerAlgo
+ *
+ * @author 29AjayKumar WorkNicolas
+ * @version 2023-05-17
+ */
+
 import java.util.Arrays;
 
 /**

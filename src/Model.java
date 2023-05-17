@@ -1,3 +1,9 @@
+/**
+ * Model for BankerAlgo
+ *
+ * @author WorkNicolas
+ * @version 2023-05-17
+ */
 public class Model {
     private int process;
     private int resource;

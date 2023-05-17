@@ -1,3 +1,10 @@
+/**
+ * Controller for BankerAlgo
+ *
+ * @author WorkNicolas
+ * @version 2023-05-17
+ */
+
 import java.util.Scanner;
 
 public class Controller {
@@ -9,9 +16,20 @@ public class Controller {
         this.view = view;
         this.sc = sc;
     }
+
+    /**
+     * Update view with current model
+     *
+     * @param model
+     */
     public void updateView(Model model) {
         view.setModel(model);
     }
+
+    /**
+     * Preset values for testing
+     *
+     */
     public void setPreset() {
         int process = 5;
         int resource = 3;
@@ -49,6 +67,11 @@ public class Controller {
     public Model getModel() {
         return model;
     }
+
+    /**
+     * Initialize values and get new model from view
+     *
+     */
     public void initValue() {
         view.initVal(sc);
         this.model = view.getModel();
