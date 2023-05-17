@@ -2,7 +2,7 @@
 Banker's Algorithm using MVC Architecture
 The user will be able to initialize their own values
 
-## Definition
+## Definition 📄
 The Banker's Algorithm is a resource allocation and deadlock avoidance algorithm used in operating systems. It is designed to prevent deadlocks by ensuring that the system's resources are allocated safely to processes.
 
 ## BankerAlgorithm 💰🧮🔄
