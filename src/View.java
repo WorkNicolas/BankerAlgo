@@ -20,10 +20,14 @@ public class View {
         int[][] max;
         int[][] allocation;
         int[] available;
+        int[] safeSequence;
         System.out.println("Initialize Values");
         process = inputInteger(sc, "Process");
         resource = inputInteger(sc, "Resource");
         needs = new int[process][resource];
+        allocation = setMatrix(process, resource, sc, "Allocation");
+        max = setMatrix(process, resource, sc, "Max");
+        available = setVector(sc, "Available");
 
     }
     public int inputInteger(Scanner sc, String text) {
@@ -39,8 +43,26 @@ public class View {
         }
         return integer;
     }
-    public int[][] setMatrix(int m, int n, Scanner sc) {
+    public static int[] setVector(Scanner sc, String text) {
+        System.out.print("[IN IN IN ...] " + text + ":");
+        String input = sc.nextLine();
+
+        // Split the input string into individual elements
+        String[] elements = input.split(" ");
+
+        // Create an array with the same size as the number of elements
+        int[] array = new int[elements.length];
+
+        // Parse each element and store it in the array
+        for (int i = 0; i < elements.length; i++) {
+            array[i] = Integer.parseInt(elements[i]);
+        }
+
+        return array;
+    }
+    public int[][] setMatrix(int m, int n, Scanner sc, String text) {
         int[][] matrix = new int[m][n];
+        System.out.println("Set " + text);
         for (int i = 0; i < m; i++) {
             System.out.print("[IN IN IN ...] Row " + (i + 1) + ": ");
             String rowInput = sc.nextLine();
