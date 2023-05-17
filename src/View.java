@@ -14,12 +14,22 @@ public class View {
         System.out.print("Input: ");
     }
     public void initVal(Scanner sc) {
+        int process;
+        int resource;
+        int[][] needs;
+        int[][] max;
+        int[][] allocation;
+        int[] available;
         System.out.println("Initialize Values");
+        process = inputInteger(sc, "Process");
+        resource = inputInteger(sc, "Resource");
+        needs = new int[process][resource];
 
     }
-    public int inputInteger(Scanner sc) {
+    public int inputInteger(Scanner sc, String text) {
         int integer = -1;
         while (true) {
+            System.out.println("[IN] " + text + ":");
             try {
                 integer = Integer.valueOf(sc.next());
                 break;
@@ -28,6 +38,30 @@ public class View {
             }
         }
         return integer;
+    }
+    public int[][] setMatrix(int m, int n, Scanner sc) {
+        int[][] matrix = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            System.out.print("[IN IN IN ...] Row " + (i + 1) + ": ");
+            String rowInput = sc.nextLine();
+            String[] elements = rowInput.split(" ");
+            while (elements.length != n) {
+                System.out.println("Invalid row input: Enter " + n + " elements.");
+                System.out.print("[IN IN IN ...] Row " + (i + 1) + ": ");
+                rowInput = sc.nextLine();
+                elements = rowInput.split(" ");
+            }
+            // Parse the elements and store them in the matrix
+            for (int j = 0; j < n; j++) {
+                try {
+                    matrix[i][j] = Integer.parseInt(elements[j]);
+                } catch (NumberFormatException ex) {
+                    System.out.println("Invalid element: " + ex);
+                    j--; // Re-prompt for the same element
+                }
+            }
+        }
+        return matrix;
     }
     public void presetVal() {
         System.out.println("Preset Values");
