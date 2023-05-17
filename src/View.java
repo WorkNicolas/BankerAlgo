@@ -1,3 +1,10 @@
+/**
+ * Menu view for BankerAlgo
+ *
+ * @author WorkNicolas
+ * @version 2023-05-17
+ */
+
 import java.util.Scanner;
 import java.util.Arrays;
 public class View {
@@ -6,6 +13,11 @@ public class View {
         this.model = model;
         displayMenu();
     }
+
+    /**
+     * Display main menu
+     *
+     */
     public void displayMenu() {
         System.out.println("Banker's Algorithm");
         System.out.println("[1] Initialize Values");
@@ -14,6 +26,12 @@ public class View {
         System.out.println("[4] Exit");
         System.out.print("Input: ");
     }
+
+    /**
+     * User input
+     *
+     * @param sc
+     */
     public void initVal(Scanner sc) {
         // var
         int process;
@@ -40,7 +58,17 @@ public class View {
         model.setMax(max);
         model.setAvailable(available);
         model.setSafeSequence(safeSequence);
+        // display
+        displayVal();
     }
+
+    /**
+     * Reusable user input for integers
+     *
+     * @param sc
+     * @param text name of variable
+     * @return
+     */
     public int inputInteger(Scanner sc, String text) {
         int integer = -1;
         while (true) {
@@ -54,6 +82,14 @@ public class View {
         }
         return integer;
     }
+
+    /**
+     * Reusable user input for integer arrays
+     *
+     * @param sc
+     * @param text
+     * @return
+     */
     public int[] setVector(Scanner sc, String text) {
         boolean isValidInput = false;
         int[] array = null;
@@ -82,6 +118,16 @@ public class View {
 
         return array;
     }
+
+    /**
+     * Reusable user input for integer multidimensional arrays
+     *
+     * @param m
+     * @param n
+     * @param sc
+     * @param text
+     * @return
+     */
     public int[][] setMatrix(int m, int n, Scanner sc, String text) {
         int[][] matrix = new int[m][n];
         System.out.println("Set " + text);
@@ -107,10 +153,20 @@ public class View {
         }
         return matrix;
     }
+
+    /**
+     * Display preset values
+     *
+     */
     public void presetVal() {
         System.out.println("Preset Values");
         displayVal();
     }
+
+    /**
+     * Display values
+     *
+     */
     private void displayVal() {
         System.out.println("Process: " + model.getProcess());
         System.out.println("Resource: " + model.getResource());

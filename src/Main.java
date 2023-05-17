@@ -1,5 +1,18 @@
+/**
+ * Banker's Algorithm using MVC Architecture
+ * The user will be able to initialize their own values
+ *
+ * @author WorkNicolas
+ * @version 2023-05-17
+ */
+
 import java.util.Scanner;
 public class Main {
+    /**
+     * Runner
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Model model = new Model();
