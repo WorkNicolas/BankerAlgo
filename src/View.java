@@ -3,6 +3,7 @@ import java.util.Arrays;
 public class View {
     Model model;
     public View(Model model) {
+        this.model = model;
         displayMenu();
     }
     public void displayMenu() {
@@ -14,6 +15,7 @@ public class View {
         System.out.print("Input: ");
     }
     public void initVal(Scanner sc) {
+        // var
         int process;
         int resource;
         int[][] needs;
@@ -21,6 +23,7 @@ public class View {
         int[][] allocation;
         int[] available;
         int[] safeSequence;
+        // menu
         System.out.println("Initialize Values");
         process = inputInteger(sc, "Process");
         resource = inputInteger(sc, "Resource");
@@ -28,7 +31,15 @@ public class View {
         allocation = setMatrix(process, resource, sc, "Allocation");
         max = setMatrix(process, resource, sc, "Max");
         available = setVector(sc, "Available");
-
+        safeSequence = new int[process];
+        // setters
+        model.setProcess(process);
+        model.setResource(resource);
+        model.setNeeds(needs);
+        model.setAllocation(allocation);
+        model.setMax(max);
+        model.setAvailable(available);
+        model.setSafeSequence(safeSequence);
     }
     public int inputInteger(Scanner sc, String text) {
         int integer = -1;
@@ -43,19 +54,30 @@ public class View {
         }
         return integer;
     }
-    public static int[] setVector(Scanner sc, String text) {
-        System.out.print("[IN IN IN ...] " + text + ":");
-        String input = sc.nextLine();
+    public int[] setVector(Scanner scanner, String text) {
+        boolean isValidInput = false;
+        int[] array = null;
 
-        // Split the input string into individual elements
-        String[] elements = input.split(" ");
+        while (!isValidInput) {
+            try {
+                System.out.print("[IN IN IN ...] " + text + ": ");
+                String input = scanner.nextLine();
 
-        // Create an array with the same size as the number of elements
-        int[] array = new int[elements.length];
+                // Split the input string into individual elements
+                String[] elements = input.split(" ");
 
-        // Parse each element and store it in the array
-        for (int i = 0; i < elements.length; i++) {
-            array[i] = Integer.parseInt(elements[i]);
+                // Create an array with the same size as the number of elements
+                array = new int[elements.length];
+
+                // Parse each element and store it in the array
+                for (int i = 0; i < elements.length; i++) {
+                    array[i] = Integer.parseInt(elements[i]);
+                }
+
+                isValidInput = true;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter integers separated by space.");
+            }
         }
 
         return array;
@@ -95,5 +117,11 @@ public class View {
         System.out.println("Allocation Matrix:\n" + Arrays.toString(model.getAllocation()));
         System.out.println("Max Matrix:\n4" + Arrays.toString(model.getMax()));
         System.out.println("Available Resource: " + Arrays.toString(model.getAvailable()));
+    }
+    public Model getModel() {
+        return model;
+    }
+    public void setModel(Model model) {
+        this.model = model;
     }
 }

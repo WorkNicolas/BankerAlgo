@@ -5,8 +5,8 @@ public class Controller {
         this.model = model;
         this.view = view;
     }
-    public void updateView() {
-
+    public void updateView(Model model) {
+        view.setModel(model);
     }
     public void setPreset() {
         int process = 5;
@@ -34,5 +34,10 @@ public class Controller {
         model.setMax(max);
         model.setAvailable(available);
         model.setSafeSequence(safeSequence);
+        updateView(model);
+        view.presetVal();
+    }
+    public View getView() {
+        return view;
     }
 }
