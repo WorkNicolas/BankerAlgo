@@ -129,6 +129,7 @@ public class View {
      * @return
      */
     public int[][] setMatrix(int m, int n, Scanner sc, String text) {
+        sc.reset();
         int[][] matrix = new int[m][n];
         System.out.println("Set " + text);
         for (int i = 0; i < m; i++) {

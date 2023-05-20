@@ -63,11 +63,11 @@ public class BankerAlgorithm {
 
                         for (j = 0; j < resource; j++) {
                             work[j] = work[j] + allocation[i][j];
-                            int[] instance = aq.peek();
-                            if (!Arrays.equals(instance, work)) {
-                                aq.offer(Arrays.copyOf(work, resource));
-                                // System.out.println(Arrays.toString(work));
-                            }
+                        }
+                        int[] instance = aq.peek();
+                        if (!Arrays.equals(instance, work)) {
+                            aq.offer(Arrays.copyOf(work, resource));
+                            System.out.println(Arrays.toString(work));
                         }
                     }
 
@@ -140,6 +140,7 @@ public class BankerAlgorithm {
             while (Arrays.equals(instance, aq.peek())) {
                 aq.poll();
             }
+
             System.out.print(" | ");
             for (int j = 0; j < resource; j++) {
                 System.out.print(needs[i][j] + " ");
@@ -147,6 +148,7 @@ public class BankerAlgorithm {
             System.out.print(" |");
             System.out.println();
         }
+        System.out.println("Final Work: " + Arrays.toString(aq.element()));
     }
     public void procedure() {
         displayValues();
