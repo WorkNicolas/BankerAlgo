@@ -46,8 +46,8 @@ public class View {
         process = inputInteger(sc, "Process");
         resource = inputInteger(sc, "Resource");
         needs = new int[process][resource];
-        allocation = setMatrix(process, resource, sc, "Allocation");
-        max = setMatrix(process, resource, sc, "Max");
+        allocation = setMatrix(process, resource, sc, "Allocation", true);
+        max = setMatrix(process, resource, sc, "Max", false);
         available = setVector(sc, "Available");
         safeSequence = new int[process];
         // setters
@@ -128,17 +128,20 @@ public class View {
      * @param text
      * @return
      */
-    public int[][] setMatrix(int m, int n, Scanner sc, String text) {
+    public int[][] setMatrix(int m, int n, Scanner sc, String text, boolean wrongInput) {
         sc.reset();
         int[][] matrix = new int[m][n];
         System.out.println("Set " + text);
         for (int i = 0; i < m; i++) {
-            System.out.print("[IN IN IN ...] Row " + (i + 1) + ": ");
+            System.out.println("Enter " + n + " elements.");
+            if (!wrongInput) {
+                System.out.print("[IN IN IN ...] Row " + (i + 1) + ": ");
+            }
             String rowInput = sc.nextLine();
             String[] elements = rowInput.split(" ");
             while (elements.length != n) {
-                System.out.println("Invalid row input: Enter " + n + " elements.");
                 System.out.print("[IN IN IN ...] Row " + (i + 1) + ": ");
+                wrongInput = false;
                 rowInput = sc.nextLine();
                 elements = rowInput.split(" ");
             }
