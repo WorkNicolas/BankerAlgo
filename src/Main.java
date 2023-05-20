@@ -3,7 +3,7 @@
  * The user will be able to initialize their own values
  *
  * @author WorkNicolas
- * @version 2023-05-17
+ * @version 2023-05-20
  */
 
 import java.util.Scanner;
