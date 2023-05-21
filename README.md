@@ -1,5 +1,6 @@
 # Banker's Algorithm 👩‍💻
 Banker's Algorithm using MVC Architecture
+
 The user will be able to initialize their own values
 
 ## Definition 📄
@@ -22,22 +23,43 @@ Runner and implements Banker's Algorithm to find safe sequence
 
 ## Input
 Arrays use space-separated values
+
 e.g. "5 4 4 7 6"
 
 ## Preset Values
+
 Process: 5
+
+<br>
 Resource: 3
+
+<br>
 Max:
+
 7 5 3
+
 3 2 2
+
 9 0 2
+
 2 2 2
+
 4 3 3
+
+<br>
 Allocation:
+
 0 1 0
+
 2 0 0
+
 3 0 2
+
 2 1 1
+
 0 0 2
+
+<br>
 Available:
+
 3 3 2
